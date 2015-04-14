@@ -1,0 +1,5 @@
+Revision history for Perl extension Net-Statsite-Client
+
+0.1.0
+    - migrate from Etsy::StatsD
+
