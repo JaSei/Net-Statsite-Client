@@ -53,5 +53,11 @@
       }
    },
    "release_status" : "unstable",
-   "version" : "0.1.0"
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://git.int.avast.com/viruslab-systems/perl-Net-Statsite-Client.git"
+      }
+   },
+   "version" : "1.0.0"
 }
