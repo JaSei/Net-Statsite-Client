@@ -18,9 +18,14 @@ Net::Statsite::Client is based on Etsy::StatsD
 
 # METHODS
 
-## new (HOST, PORT, SAMPLE\_RATE)
+## new (host => $host, port => $port, sample\_rate => $sample\_rate, prefix => $prefix)
 
 Create a new instance.
+
+host - hostname of statsite server (default: localhost)
+port - port of statsite server (port: 8125)
+sample\_rate - rate of sends metrics (default: 1)
+prefix - prefix metric name (default: '')
 
 ## timing(STAT, TIME, SAMPLE\_RATE)
 

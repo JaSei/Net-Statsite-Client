@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = "0.1.0";
+our $VERSION = "1.0.0";
 
 use IO::Socket;
 use Carp;
@@ -28,25 +28,30 @@ Net::Statsite::Client is based on Etsy::StatsD
 
 =head1 METHODS
 
-=head2 new (HOST, PORT, SAMPLE_RATE)
+=head2 new (host => $host, port => $port, sample_rate => $sample_rate, prefix => $prefix)
 
 Create a new instance.
+
+host - hostname of statsite server (default: localhost)
+port - port of statsite server (port: 8125)
+sample_rate - rate of sends metrics (default: 1)
+prefix - prefix metric name (default: '')
 
 =cut
 
 sub new {
-    my ($class, $host, $port, $sample_rate, $prefix) = @_;
-    $host   = 'localhost' unless defined $host;
-    $port   = 8125        unless defined $port;
-    $prefix = ''          unless defined $prefix;
+    my ($class, %options) = @_;
+    $options{host}   = 'localhost' unless defined $options{host};
+    $options{port}   = 8125        unless defined $options{port};
+    $options{prefix} = ''          unless defined $options{prefix};
 
     my $sock = new IO::Socket::INET(
-        PeerAddr => $host,
-        PeerPort => $port,
+        PeerAddr => $options{host},
+        PeerPort => $options{port},
         Proto    => 'udp',
     ) or croak "Failed to initialize socket: $!";
 
-    bless { socket => $sock, sample_rate => $sample_rate, prefix => $prefix }, $class;
+    bless { socket => $sock, sample_rate => $options{sample_rate}, prefix => $options{prefix} }, $class;
 }
 
 =head2 timing(STAT, TIME, SAMPLE_RATE)

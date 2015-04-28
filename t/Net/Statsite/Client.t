@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '0.1.0';
+our $VERSION = '1.0.0';
 
 use File::Spec::Functions qw(catfile);
 use FindBin qw($Bin);
@@ -55,5 +55,5 @@ ok( $statsd->update(['a','b']) );
 is( $data->{a}, "1|c");
 is( $data->{b}, "1|c");
 
-ok ( my $remote = Net::Statsite::Client->new('localhost', 123));
+ok ( my $remote = Net::Statsite::Client->new(port => 123));
 is ( $remote->{socket}->peerport, 123, 'used specified port');
