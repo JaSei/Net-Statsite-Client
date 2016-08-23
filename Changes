@@ -1,6 +1,10 @@
 Revision history for Perl extension Net-Statsite-Client
 
-0.1.0
-    - migrate from Etsy::StatsD
+1.0.1
+    - improve documentation
 1.0.0
     - change counstructor api (method new) to named parameters
+    - add uniq method
+    - sanitize key (remove statsite separators)
+0.1.0
+    - migrate from Etsy::StatsD

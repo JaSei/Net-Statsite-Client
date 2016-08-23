@@ -28,3 +28,4 @@ cover_db/
 MYMETA.*
 
 /Net-Statsite-Client-*
+/cpanfile.snapshot

@@ -3,14 +3,14 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = "1.0.0";
+our $VERSION = '1.0.1';
 
 use IO::Socket;
 use Carp;
 
 =head1 NAME
 
-Net::Statsite::Client - Object-Oriented Client for statsite Server
+Net::Statsite::Client - Object-Oriented Client for L<statsite|http://armon.github.io/statsite> server
 
 =head1 SYNOPSIS
 
@@ -24,7 +24,7 @@ Net::Statsite::Client - Object-Oriented Client for statsite Server
 
 =head1 DESCRIPTION
 
-Net::Statsite::Client is based on Etsy::StatsD
+Net::Statsite::Client is based on L<Etsy::StatsD> but with new - C<new> interface and C<unique> method.
 
 =head1 METHODS
 
@@ -32,10 +32,13 @@ Net::Statsite::Client is based on Etsy::StatsD
 
 Create a new instance.
 
-host - hostname of statsite server (default: localhost)
-port - port of statsite server (port: 8125)
-sample_rate - rate of sends metrics (default: 1)
-prefix - prefix metric name (default: '')
+I<host> - hostname of statsite server (default: localhost)
+
+I<port> - port of statsite server (port: 8125)
+
+I<sample_rate> - rate of sends metrics (default: 1)
+
+I<prefix> - prefix metric name (default: '')
 
 =cut
 
@@ -56,7 +59,7 @@ sub new {
 
 =head2 timing(STAT, TIME, SAMPLE_RATE)
 
-Log timing information
+Log timing information (should be in miliseconds)
 
 =cut
 
@@ -109,6 +112,9 @@ sub update {
 =head2 unique(STATS, ITEM, SAMPLE_RATE)
 
 Unique Set
+
+For example if you need count of unique ip adresses (per flush interval)
+    $stats->unique('ip.unique', $ip);
 
 =cut
 

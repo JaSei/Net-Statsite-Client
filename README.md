@@ -1,6 +1,6 @@
 # NAME
 
-Net::Statsite::Client - Object-Oriented Client for statsite Server
+Net::Statsite::Client - Object-Oriented Client for [statsite](http://armon.github.io/statsite) server
 
 # SYNOPSIS
 
@@ -14,7 +14,7 @@ Net::Statsite::Client - Object-Oriented Client for statsite Server
 
 # DESCRIPTION
 
-Net::Statsite::Client is based on Etsy::StatsD
+Net::Statsite::Client is based on [Etsy::StatsD](https://metacpan.org/pod/Etsy::StatsD) but with new - `new` interface and `unique` method.
 
 # METHODS
 
@@ -22,14 +22,17 @@ Net::Statsite::Client is based on Etsy::StatsD
 
 Create a new instance.
 
-host - hostname of statsite server (default: localhost)
-port - port of statsite server (port: 8125)
-sample\_rate - rate of sends metrics (default: 1)
-prefix - prefix metric name (default: '')
+_host_ - hostname of statsite server (default: localhost)
+
+_port_ - port of statsite server (port: 8125)
+
+_sample\_rate_ - rate of sends metrics (default: 1)
+
+_prefix_ - prefix metric name (default: '')
 
 ## timing(STAT, TIME, SAMPLE\_RATE)
 
-Log timing information
+Log timing information (should be in miliseconds)
 
 ## increment(STATS, SAMPLE\_RATE)
 
@@ -46,6 +49,9 @@ Update one of more stats counters by arbitrary amounts.
 ## unique(STATS, ITEM, SAMPLE\_RATE)
 
 Unique Set
+
+For example if you need count of unique ip adresses (per flush interval)
+    $stats->unique('ip.unique', $ip);
 
 ## gauge(STATS, VALUE, SAMPLE\_RATE)
 
