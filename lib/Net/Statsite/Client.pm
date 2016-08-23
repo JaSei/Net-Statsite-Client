@@ -10,7 +10,7 @@ use Carp;
 
 =head1 NAME
 
-Net::Statsite::Client - Object-Oriented Client for statsite server
+Net::Statsite::Client - Object-Oriented Client for L<statsite|http://armon.github.io/statsite> server
 
 =head1 SYNOPSIS
 
@@ -26,7 +26,6 @@ Net::Statsite::Client - Object-Oriented Client for statsite server
 
 Net::Statsite::Client is based on L<Etsy::StatsD> but with new - C<new> interface and C<unique> method.
 
-L<statsite|http://armon.github.io/statsite>
 
 =head1 METHODS
 
