@@ -1,18 +1,14 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.0.1';
-
 use File::Spec::Functions qw(catfile);
 use FindBin qw($Bin);
-use Test::More tests => 19;
+use Test::More tests => 18;
 use Test::MockModule;
 
 use lib catfile($Bin, '../../../lib');
 
 use_ok('Net::Statsite::Client');
-
-is($Net::Statsite::Client::VERSION, $VERSION, 'test-module version check');
 
 my $module = Test::MockModule->new('Net::Statsite::Client');
 my $data;

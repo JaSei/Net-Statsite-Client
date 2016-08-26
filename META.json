@@ -64,7 +64,7 @@
          "web" : "https://github.com/avast/Net-Statsite-Client"
       }
    },
-   "version" : "1.0.1",
+   "version" : "1.0.2",
    "x_contributors" : [
       "Miroslav Tynovsky <tynovsky@avast.com>"
    ]
