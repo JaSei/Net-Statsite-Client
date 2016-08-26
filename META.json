@@ -54,9 +54,14 @@
    },
    "release_status" : "unstable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/avast/Net-Statsite-Client/issues"
+      },
+      "homepage" : "https://github.com/avast/Net-Statsite-Client",
       "repository" : {
          "type" : "git",
-         "url" : "git://git.int.avast.com/perl-modules/Net-Statsite-Client.git"
+         "url" : "git://github.com/avast/Net-Statsite-Client.git",
+         "web" : "https://github.com/avast/Net-Statsite-Client"
       }
    },
    "version" : "1.0.1",

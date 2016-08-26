@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/avast/Net-Statsite-Client.svg?branch=master)](https://travis-ci.org/avast/Net-Statsite-Client)
 # NAME
 
 Net::Statsite::Client - Object-Oriented Client for [statsite](http://armon.github.io/statsite) server
