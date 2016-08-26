@@ -1,3 +1,4 @@
+
 # NAME
 
 Net::Statsite::Client - Object-Oriented Client for [statsite](http://armon.github.io/statsite) server
