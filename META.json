@@ -4,7 +4,7 @@
       "Jan Seidl <seidl@avast.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.4, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "Minilla/v3.0.0, CPAN::Meta::Converter version 2.142690",
    "license" : [
       "perl_5"
    ],
@@ -64,7 +64,7 @@
          "web" : "https://github.com/avast/Net-Statsite-Client"
       }
    },
-   "version" : "1.0.2",
+   "version" : "1.0.3",
    "x_contributors" : [
       "Miroslav Tynovsky <tynovsky@avast.com>"
    ]
