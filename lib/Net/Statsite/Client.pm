@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = '1.0.2';
+our $VERSION = '1.0.3';
 
 use IO::Socket;
 use Carp;
@@ -171,7 +171,7 @@ sub send {
 
         #sanitize key (remove statsite separators)
         #https://github.com/armon/statsite#protocol
-        $key =~ s/[:|]/_/g;
+        $key =~ s/[:|\/]/_/g;
 
         _send_to_sock($socket, "$key:$value\n");
         ++$count;
