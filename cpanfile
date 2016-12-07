@@ -5,3 +5,8 @@ on 'test' => sub {
     requires 'Test::MockModule';
 };
 
+on 'develop' => sub {
+    requires 'Minilla';
+    requires 'Module::Build::Tiny';
+    requires 'Version::Next';
+};

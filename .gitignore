@@ -29,3 +29,5 @@ MYMETA.*
 
 /Net-Statsite-Client-*
 /cpanfile.snapshot
+
+.carmel/

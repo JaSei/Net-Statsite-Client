@@ -1,5 +1,9 @@
 Revision history for Perl extension Net-Statsite-Client
 
+{{$NEXT}}
+
+1.0.3 2016-12-07T10:20:05Z
+    - replace / by _ in key
 1.0.2
     - add travis badges to readme
 1.0.1
