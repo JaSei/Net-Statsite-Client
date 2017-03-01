@@ -3,7 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 
-our $VERSION = '1.0.3';
+our $VERSION = '1.1.0';
 
 use IO::Socket;
 use Carp;
@@ -41,6 +41,8 @@ I<sample_rate> - rate of sends metrics (default: 1)
 
 I<prefix> - prefix metric name (default: '')
 
+I<proto> - protocol (default: 'udp')
+
 =cut
 
 sub new {
@@ -48,11 +50,14 @@ sub new {
     $options{host}   = 'localhost' unless defined $options{host};
     $options{port}   = 8125        unless defined $options{port};
     $options{prefix} = ''          unless defined $options{prefix};
+    $options{proto}  = 'udp'       unless defined $options{proto};
 
-    my $sock = new IO::Socket::INET(
+    die "Invalid protocol '$options{proto}' (tcp|udp)" if $options{proto} !~ /^(?:tcp|udp)$/;
+
+    my $sock = IO::Socket::INET->new(
         PeerAddr => $options{host},
         PeerPort => $options{port},
-        Proto    => 'udp',
+        Proto    => $options{proto},
     ) or croak "Failed to initialize socket: $!";
 
     bless { socket => $sock, sample_rate => $options{sample_rate}, prefix => $options{prefix} }, $class;
@@ -183,6 +188,21 @@ sub _send_to_sock( $$ ) {
     my ($sock, $msg) = @_;
     CORE::send($sock, $msg, 0);
 }
+
+=head1 CONTRIBUTING
+
+the easiest way is use docker (L<avastsoftware/perl-extended|https://hub.docker.com/r/avastsoftware/perl-extended/> - with L<Carton> and L<Minilla>)
+
+or L<Carton> and C<Minilla> itself (commands after C<../perl-extended>) 
+
+carton (aka ruby bundle) for fetch dependency
+
+    docker run -v $PWD:/tmp/app -w /tmp/app avastsoftware/perl-extended carton
+
+and minil test for tests and regenerate meta and readme
+
+    docker run -v $PWD:/tmp/app -w /tmp/app avastsoftware/perl-extended carton exec minil test
+
 
 =head1 LICENSE
 

@@ -31,6 +31,8 @@ _sample\_rate_ - rate of sends metrics (default: 1)
 
 _prefix_ - prefix metric name (default: '')
 
+_proto_ - protocol (default: 'udp')
+
 ## timing(STAT, TIME, SAMPLE\_RATE)
 
 Log timing information (should be in miliseconds)
@@ -61,6 +63,20 @@ Gauge Set (Gauge, similar to  kv  but only the last value per key is retained)
 ## send(DATA, SAMPLE\_RATE)
 
 Sending logging data; implicitly called by most of the other methods.
+
+# CONTRIBUTING
+
+the easiest way is use docker ([avastsoftware/perl-extended](https://hub.docker.com/r/avastsoftware/perl-extended/) - with [Carton](https://metacpan.org/pod/Carton) and [Minilla](https://metacpan.org/pod/Minilla))
+
+or [Carton](https://metacpan.org/pod/Carton) and `Minilla` itself (commands after `../perl-extended`) 
+
+carton (aka ruby bundle) for fetch dependency
+
+    docker run -v $PWD:/tmp/app -w /tmp/app avastsoftware/perl-extended carton
+
+and minil test for tests and regenerate meta and readme
+
+    docker run -v $PWD:/tmp/app -w /tmp/app avastsoftware/perl-extended carton exec minil test
 
 # LICENSE
 
