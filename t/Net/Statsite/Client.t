@@ -3,8 +3,10 @@ use warnings;
 
 use File::Spec::Functions qw(catfile);
 use FindBin qw($Bin);
-use Test::More tests => 18;
+use Test::More tests => 19;
 use Test::MockModule;
+use Port::Selector;
+use Test::Exception;
 
 use lib catfile($Bin, '../../../lib');
 
@@ -53,3 +55,26 @@ is( $data->{b}, "1|c");
 
 ok ( my $remote = Net::Statsite::Client->new(port => 123));
 is ( $remote->{socket}->peerport, 123, 'used specified port');
+
+subtest 'test tcp' => sub {
+    throws_ok { my $tcp = Net::Statsite::Client->new(proto => 'blabla') } qr/^Invalid protocol/, 'Invalid protocol';
+
+    my $p_select = Port::Selector->new();
+    my $port = $p_select->port();
+
+    my $statsd_mock = IO::Socket::INET->new(
+        Listen    => 1,
+        LocalAddr => 'localhost',
+        LocalPort => $port,
+        Proto     => 'tcp'
+    );
+
+    ok(
+        Net::Statsite::Client->new(port => $port, proto => 'tcp'),
+        'tcp connection'
+    );
+
+    done_testing(2);
+};
+
+
